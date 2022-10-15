@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.js</file>
+        <file>Main.qml</file>
+        <file>Window.qml</file>
+        <file>Login.qml</file>
+        <file>app.ico</file>
+    </qresource>
+</RCC>

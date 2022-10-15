@@ -1,0 +1,14 @@
+{
+  "name": "qml-autoit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node dev/dev.js",
+    "build": "node dev/build.js"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "nodemon": "^2.0.19"
+  }
+}
