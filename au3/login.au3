@@ -1,10 +1,15 @@
 #include "lib/qml.au3"
 
 Func onUserLogin($user)
-	$ui.setView('test')
 	if $user.username = 'admin' and $user.password = 'admin' Then
-		$ui.login.setStatus('login success', 'green')
+		$ui.setView('MainView')
+		$ui.setTitle('Welcome')
 	Else
-		$ui.login.setStatus('login error')
+		$ui.login.setStatus('login error', 'red')
 	EndIf
 EndFunc   ;==>onUserLogin
+
+Func onUserLogout()
+	$ui.setTitle('Login')
+	$ui.setView('Login')
+EndFunc

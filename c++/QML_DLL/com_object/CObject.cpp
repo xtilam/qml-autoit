@@ -44,6 +44,7 @@ void CObject::set(FunctionInput *params)
             ->nextToCVariant(v);
 
     this->setProperty(key, v);
+    params->setResultObject(this);
 }
 
 void CObject::deleteProperty(FunctionInput *params)

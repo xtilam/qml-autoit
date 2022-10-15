@@ -6,12 +6,13 @@ import QtQml 2.12
 ApplicationWindow{
 	visible: true
 	id: window
+	title: "QML Application"
 
 	Loader{
 		anchors.fill: parent
 		anchors.margins: 0
 		id: _mainLoader
-		source: "Main.qml"
+		source: "_Main.qml"
 	}
 
 	Component.onCompleted: 
@@ -23,7 +24,7 @@ ApplicationWindow{
 							   target: au3
 							   onAu3Reload: {
 							   _mainLoader.source = ""
-							   _mainLoader.source = "Main.qml"
+							   _mainLoader.source = "_Main.qml"
 							   }
 							   }`, window)
 		}

@@ -1,9 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.js</file>
-        <file>Main.qml</file>
-        <file>Window.qml</file>
+        <file>_Main.qml</file>
+        <file>_Window.qml</file>
         <file>Login.qml</file>
         <file>app.ico</file>
+        <file>MainView.qml</file>
     </qresource>
 </RCC>

@@ -39,11 +39,13 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmd
     wstring wexePath(exePath.begin(), exePath.end());
 
     wstring application;
-    application.append(wexePath).append(L"\\bin\\libMSQL.dll                  ");
+    application.append(wexePath).append(L"\\bin\\avm");
     wstring arg;
-    arg.append(L" ").append(wexePath).append(L"\\bin\\libUI.dll                   ");
+    arg.append(L" \"").append(wexePath).append(L"\\bin\\libUI.dat\" ");
+    string environent;
+    environent.append("PATH=").append(exePath).append("\\bin;").append(std::getenv("PATH"));
     CreateProcess(application.c_str(), &arg[0], NULL, NULL, 0,
-        CREATE_NO_WINDOW, NULL, NULL, &si, &pi);
+        CREATE_NO_WINDOW, (LPVOID) environent.c_str(), NULL, &si, &pi);
     return 0;
 }
 

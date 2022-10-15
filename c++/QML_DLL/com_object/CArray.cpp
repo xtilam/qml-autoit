@@ -51,6 +51,7 @@ void CArray::_push(FunctionInput *params)
         params->nextToCVariant(v);
         this->items.push_back(v);
     }
+    params->setResultObject(this);
 }
 
 void CArray::push(vector<CVariant *> variants)

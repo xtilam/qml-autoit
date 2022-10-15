@@ -39,10 +39,12 @@ EndFunc   ;==>QML_loadDLL
 ;~ For dev mode
 Func QML_loadQMLFromFile($file)
 	DllCall($QML_DLL, 'none', 'qmlLoadFile', 'wstr', $file)
+	QML_ProcessEvents()
 EndFunc   ;==>QML_loadQMLFromFile
 ;~ For release mode
 Func QML_loadQMLFromQRC($file)
 	DllCall($QML_DLL, 'none', 'qmlLoadQRC', 'wstr', $file)
+	QML_ProcessEvents()
 EndFunc   ;==>QML_loadQMLFromQRC
 
 Func QML_mainHandleSignal($func, $p)

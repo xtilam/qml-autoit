@@ -10,5 +10,8 @@
   "devDependencies": {
     "colors": "^1.4.0",
     "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "changeexe": "^1.0.2"
   }
 }

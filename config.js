@@ -20,6 +20,10 @@ const config = {
             path.join(__dirname, 'c++/Au3Start/x64/Release/Au3Start.exe'),
             path.join(__dirname, 'bin/app.exe')
         ],
+        [
+            path.join(__dirname, 'c++/Au3Start/x64/Release/Au3Start.exe'),
+            path.join(__dirname, 'build/app.exe')
+        ],
     ],
     buildTarget: path.join(__dirname, './build'),
     windeploytArguments: [
@@ -31,7 +35,8 @@ const config = {
         '--no-opengl-sw',
         '--no-widgets',
         '--no-angle',
-    ]
+    ],
+    autoItBuildName: 'FoxApp.exe'
 }
 
 module.exports = config

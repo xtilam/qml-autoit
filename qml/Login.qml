@@ -35,6 +35,7 @@ Item {
 			placeholderText: "Password"
 			Layout.columnSpan: 2
 			Layout.fillWidth: true
+			echoMode: TextInput.Password
 		}
 		Text {
 			id: status

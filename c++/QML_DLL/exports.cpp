@@ -143,10 +143,10 @@ void execLoopEvent()
     engine->clearComponentCache();
     engine->collectGarbage();
     ui->clear();
+    au3->au3Reload();
     if(Au3Callback::onReload) {
         Au3Callback::onReload();
     }
-    au3->au3Reload();
     reloadCounted++;
     return app->processEvents();
 }

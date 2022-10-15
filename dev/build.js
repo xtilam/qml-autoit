@@ -3,6 +3,7 @@ const fs = require('fs')
 const color = require('colors')
 const config = require('../config')
 const { spawn } = require('child_process')
+const changeExe = require('changeexe');
 
 const BUILD_DIR = config.buildTarget
 const BUILD_DLL_DIR = path.join(BUILD_DIR, 'qml_dll')
@@ -19,11 +20,22 @@ async function main() {
     fs.mkdirSync(BUILD_DLL_DIR, { recursive: true })
 
     await buildDLL(path.join(BUILD_DIR, '/bin/qml.dll')) 
-    await compileA3X(path.join(BUILD_DIR, 'bin/libUI.dll'))
+    await compileA3X(path.join(BUILD_DIR, 'bin/libUI.dat'))
     fs.copyFileSync(path.join(__dirname, '../bin/obj.dll'), path.join(BUILD_DIR, '/bin/obj.dll'))
     fs.copyFileSync(path.join(__dirname, '../bin/app.exe'), path.join(BUILD_DIR, 'app.exe'))
-    fs.copyFileSync(path.join(config.au3Path, 'AutoIt3_x64.exe'), path.join(BUILD_DIR, '/bin/libMSQL.dll'))
+    // fs.copyFileSync(path.join(config.au3Path, 'AutoIt3_x64.exe'), path.join(BUILD_DIR, '/bin/application'))
 
+    const au3ExecuteSavePath = path.join(BUILD_DIR, '/bin/avm')
+    const au3X64Path = path.join(config.au3Path, 'AutoIt3_x64.exe')
+    const au3X64Content = fs.readFileSync(au3X64Path)
+    replaceString(au3X64Content, 
+        getStr('AutoIt v3 Script'),
+        getStr(config.autoItBuildName)
+    ) 
+    fs.writeFileSync(au3ExecuteSavePath, au3X64Content)
+
+    await changeExe.icon(au3ExecuteSavePath, path.join(__dirname, '../qml/app.ico'));
+    await changeExe.icon(path.join(BUILD_DIR, 'app.exe'), path.join(__dirname, '../qml/app.ico'));
 }
 
 async function buildDLL(outDLLPath) {
@@ -110,4 +122,48 @@ function spawnExec(...args) {
     })
 
     return {child, promise}
+}
+
+function setName(){
+
+}
+
+function replaceString(data, listData, replace) {
+    const length = data.length
+    const listLength = listData.length
+    const replaceLength = replace.length
+
+    let char = -1
+    let hasResult = true
+    let listIndex = []
+
+    for (let i = 0; i < length; i++) {
+        hasResult = true
+        for (let j = 0; j < listLength; j++) {
+            if (data[i + j] !== listData[j]) {
+                hasResult = false
+                break
+            }
+        }
+        if (hasResult) {
+            listIndex.push(i)
+        }
+    }
+
+
+    for (const i of listIndex) {
+        for (let j = 0; j < listLength; j++) {
+            data[i + j] = replace[j] || 0
+        }
+    }
+
+}
+
+function getStr(str){
+    let utf8Encode = new TextEncoder();
+    let bytes = utf8Encode.encode(str)
+    return bytes.reduce((acc, v)=>{
+        acc.push(v, 0)
+        return acc
+    }, [])
 }
