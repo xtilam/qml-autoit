@@ -138,6 +138,7 @@ void Au3::setDataCArrayFromListVariant(CArray *arr, QList<QVariant> *listItem)
                 setDataCArrayFromListVariant(subArr, &subList);
                 break;
             }
+            default: break;
             }
         }
 
@@ -154,12 +155,12 @@ void Au3::setDataCObjectFromMapVariant(CObject *obj, QMap<QString, QVariant> *ma
         if(!item->isNull()){
             switch(item->type()){
             case QVariant::String:
-                {
-                    auto str = item->toString();
-                    if(str.isEmpty()) break;
-                    variant->setValueFromQString(str);
-                    break;
-                }
+            {
+                auto str = item->toString();
+                if(str.isEmpty()) break;
+                variant->setValueFromQString(str);
+                break;
+            }
                 break;
             case QVariant::Int:
                 variant->setValueFromNumber(item->toInt());
@@ -183,6 +184,7 @@ void Au3::setDataCObjectFromMapVariant(CObject *obj, QMap<QString, QVariant> *ma
                 variant->setValueFromObject(subArr);
                 break;
             }
+            default:break;
             }
         }
         auto key = i.key();

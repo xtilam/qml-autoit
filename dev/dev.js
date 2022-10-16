@@ -56,15 +56,18 @@ async function main() {
                 autoIt3WrapperAu3Path,
                 '/run',
                 '/x64',
-                '/console',
+                '/prod',
                 '/ErrorStdOut',
                 '/in',
                 `${config.mainAu3Path}`
             ],
                 {
                     env: {
-                        PATH: `${path.join(__dirname, '../bin')};${config.qt.bin};${process.env.PATH}`,
-                        FORCE_COLOR: true
+                        PATH: `${config.qt.bin};${config.qt.plugins};${path.join(__dirname, '../bin')};${process.env.PATH}`,
+                        QT_PLUGIN_PATH : config.qt.plugins,
+                        QML_IMPORT_PATH: path.join(path.dirname(config.qt.bin), 'qml'),
+                        QML2_IMPORT_PATH: path.join(path.dirname(config.qt.bin), 'qml'),
+                        // FORCE_COLOR: true
                     },
                 }
             )

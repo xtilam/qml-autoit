@@ -11,8 +11,8 @@ public:
     vector<CVariant *> items;
     typedef void (CArray::*CArrayPrototype)(FunctionInput *);
 
-    void onCreate() override;
-    void onDelete() override;
+    void onCreate() final override;
+    void onDelete() final override;
 
     void _length(FunctionInput *params);
     uint length();

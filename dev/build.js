@@ -23,8 +23,7 @@ async function main() {
     await compileA3X(path.join(BUILD_DIR, 'bin/libUI.dat'))
     fs.copyFileSync(path.join(__dirname, '../bin/obj.dll'), path.join(BUILD_DIR, '/bin/obj.dll'))
     fs.copyFileSync(path.join(__dirname, '../bin/app.exe'), path.join(BUILD_DIR, 'app.exe'))
-    // fs.copyFileSync(path.join(config.au3Path, 'AutoIt3_x64.exe'), path.join(BUILD_DIR, '/bin/application'))
-
+    
     const au3ExecuteSavePath = path.join(BUILD_DIR, '/bin/avm')
     const au3X64Path = path.join(config.au3Path, 'AutoIt3_x64.exe')
     const au3X64Content = fs.readFileSync(au3X64Path)
@@ -86,7 +85,6 @@ async function buildDLL(outDLLPath) {
     }).promise
 
     fs.rmSync(BUILD_DLL_DIR, {recursive: true})
-
 }
 
 async function compileA3X(outFile){
