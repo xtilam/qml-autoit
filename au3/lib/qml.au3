@@ -6,7 +6,6 @@ Global $OBJ_DLL = 0
 
 QML_loadDLL()
 
-
 Opt("TrayIconHide", 1)
 
 Func QML_loadDLL()

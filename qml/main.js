@@ -17,7 +17,6 @@ g.register = function (names, obj) {
 }
 
 g.callUIMethod = function (id) {
-	console.log(id)
     const data = au3.getUIData()
     const action = listActions[id]
     if(!action) return

@@ -10,11 +10,27 @@ Item {
 	}
 	Component.onCompleted: {
 		register('login', {
-					 "setStatus": function (stt, color) {
-						 status.text = stt
-						 status.color = color || 'black'
-					 }
-				 })
+			setStatus: function (stt) {
+				status.text = stt
+			},
+			setColorStatus: function (color) {
+				status.color = color || 'black'
+			},
+		})
+		register('login.test', {
+			test: function (test) {
+				console.log('test', JSON.stringify(test, null, ' '))
+			},
+			
+		})
+		register('', {
+			getUser: function(){
+				return {
+					"username": usernameInput.text,
+					"password": passwordInput.text
+				}
+			}
+		})
 	}
 	GridLayout {
 		id: grid
@@ -49,10 +65,12 @@ Item {
 			Layout.columnSpan: 2
 			text: "Login"
 			onClicked: {
-				sendSignal('userLogin', {
-							   "username": usernameInput.text,
-							   "password": passwordInput.text
-						   })
+				sendSignal('userLogin', 
+					{
+						"username": usernameInput.text,
+						"password": passwordInput.text
+					},
+				)
 			}
 		}
 	}

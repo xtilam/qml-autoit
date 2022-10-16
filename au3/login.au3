@@ -5,7 +5,8 @@ Func onUserLogin($user)
 		$ui.setView('MainView')
 		$ui.setTitle('Welcome')
 	Else
-		$ui.login.setStatus('login error', 'red')
+		$ui.login.setStatus('Login Failed')
+		$ui.login.setColorStatus('red')
 	EndIf
 EndFunc   ;==>onUserLogin
 
