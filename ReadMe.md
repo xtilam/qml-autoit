@@ -8,22 +8,24 @@
 - VSCode IDE (cho tiện)
 
 # Source Code:
-    - au3: Source code AU3
-    - qml: Source qml -> cho ui
-    - dev: chứa các script build và chạy app trong môi trường phát triển
-    - config.js: chứa cấu hình
-        + qtDir: Path Qt5.12.12.rar giải nén (trước thư mục tool)
-        + au3DevEnv: biến môi trường khi chạy script autoit
-        + config
-            + au3Path: đường dẫn autoit cài trong máy
-            + autoItBuildName: tên process khi chạy build ra
-            + buildTarget: đường dẫn thư mục build
-            + mainAu3Path: đường dẫn file autoit script chính sẽ chạy
-            + watchers: khi chạy trong môi trường dev sẽ tự động theo dõi và copy các file vào thư mục chỉ định, sẽ reload app nếu build thay đổi
-                - qml.dll: dll chính dùng trong môi trường phát triển
-                - obj.dll: mingw64 trong Qt ko compile đc Com Object nên phải buid riêng bằng msvc
-                - app.exe: dùng trong file build, sẽ khởi động autoit từ a3x đã compile, thay thế file .bat
-            + windeploytArguments: các tham số cấu hình khi deploy qt, xem thêm (Qt for Windows - Deployment)
+```text
+- au3: Source code AU3
+- qml: Source qml -> cho ui
+- dev: chứa các script build và chạy app trong môi trường phát triển
+- config.js: chứa cấu hình
+    + qtDir: Path Qt5.12.12.rar giải nén (trước thư mục tool)
+    + au3DevEnv: biến môi trường khi chạy script autoit
+    + config
+        + au3Path: đường dẫn autoit cài trong máy
+        + autoItBuildName: tên process khi chạy build ra
+        + buildTarget: đường dẫn thư mục build
+        + mainAu3Path: đường dẫn file autoit script chính sẽ chạy
+        + watchers: khi chạy trong môi trường dev sẽ tự động theo dõi và copy các file vào thư mục chỉ định, sẽ reload app nếu build thay đổi
+            - qml.dll: dll chính dùng trong môi trường phát triển
+            - obj.dll: mingw64 trong Qt ko compile đc Com Object nên phải buid riêng bằng msvc
+            - app.exe: dùng trong file build, sẽ khởi động autoit từ a3x đã compile, thay thế file .bat
+        + windeploytArguments: các tham số cấu hình khi deploy qt, xem thêm (Qt for Windows - Deployment)
+```
 
 
 # Sử dụng cơ bản
