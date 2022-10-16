@@ -2,16 +2,26 @@ const path = require('path')
 
 const qtDir = 'E:/Qtcc/Qt5.12.12'
 
+const qtPath = {
+    bin: path.join(qtDir, '/5.12.12/mingw73_64/bin'),
+    plugins: path.join(qtDir, '/5.12.12/mingw73_64/plugins'),
+    mingwBin: path.join(qtDir, '/Tools/mingw730_64/bin'),
+}
+
+const au3DevEnv = {
+    PATH: `${qtPath.bin};${path.join(__dirname, './bin')};${process.env.PATH}`,
+    QT_PLUGIN_PATH: qtPath.plugins,
+    QML_IMPORT_PATH: path.join(path.dirname(qtPath.bin), 'qml'),
+    QML2_IMPORT_PATH: path.join(path.dirname(qtPath.bin), 'qml'),
+}
+
 const config = {
     au3Path: 'C:/Program Files (x86)/AutoIt3',
     autoItBuildName: 'FoxApp.exe',
     buildTarget: path.join(__dirname, './build'),
     mainAu3Path: path.join(__dirname, 'au3/main.au3'),
-    qt: {
-        bin: path.join(qtDir, '/5.12.12/mingw73_64/bin'),
-        plugins: path.join(qtDir, '/5.12.12/mingw73_64/plugins'),
-        mingwBin: path.join(qtDir, '/Tools/mingw730_64/bin'),
-    },
+    qt: qtPath,
+    au3DevEnv,
     watchers: [
         // [
         //     path.join(__dirname, 'c++/_release/release/QML_DLL.dll'),
@@ -41,5 +51,6 @@ const config = {
         '--no-qmltooling',
     ],
 }
+
 
 module.exports = config

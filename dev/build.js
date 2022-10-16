@@ -122,10 +122,6 @@ function spawnExec(...args) {
     return {child, promise}
 }
 
-function setName(){
-
-}
-
 function replaceString(data, listData, replace) {
     const length = data.length
     const listLength = listData.length
