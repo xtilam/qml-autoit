@@ -7,13 +7,22 @@
 - AutoIt3 + Scite
 - VSCode IDE (cho tiện)
 
+# Các lệnh npm cơ bản
+```text\
+npm run dev => chạy môi trường dev, auto reload .au3 và .qml
+npm run qt-setup 
+    => cấu hình lại thư mục Qt5.12.12 được giải nén 
+    *Note: cấu hình biến qtDir trong file config.js, đường dẫn đến trước thư mục Tools
+npm run build => build app
+```
+
 # Source Code:
 ```text
 - au3: Source code AU3
 - qml: Source qml -> cho ui
 - dev: chứa các script build và chạy app trong môi trường phát triển
 - config.js: chứa cấu hình
-    + qtDir: Path Qt5.12.12.rar giải nén (trước thư mục tool)
+    + qtDir: Path Qt5.12.12.rar giải nén (đường dẫn đến trước thư mục Tools)
     + au3DevEnv: biến môi trường khi chạy script autoit
     + config
         + au3Path: đường dẫn autoit cài trong máy

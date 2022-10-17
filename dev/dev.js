@@ -83,7 +83,7 @@ async function main() {
         let oldTimeStartCopy = 0
 
         try {
-            await copyFile(false)
+            await copyFile()
         } catch (error) {
             console.log(`copy error[ ${error} ]: ${source} => ${dest}`)
         }
