@@ -2,6 +2,7 @@
 #include <QDebug>
 #include "CArray.h"
 #include "CObject.h"
+#include "UIObject.h"
 
 void CDebugger::log(FunctionInput *param)
 {
@@ -49,11 +50,12 @@ void CDebugger::logVariant(CVariant *variant, QDebug &debug, const char * trace,
         debug << trace << "]";
         break;
     }
-
     case CVariant::Object:
     {
         BaseObject * bobj = (BaseObject *)variant->ptr;
-        if(bobj->objType == BaseObject::OBJECT){
+        switch(bobj->objType){
+        case BaseObject::OBJECT:
+        {
             debug << "Object {\n";
             CObject * obj = (CObject *) bobj;
             auto nextTrace =  QString::fromStdString(trace).append("  ").toStdString();
@@ -63,9 +65,31 @@ void CDebugger::logVariant(CVariant *variant, QDebug &debug, const char * trace,
                 debug << ",\n";
             }
             debug << trace << "}";
-        }else{
-            debug << "Object(" << bobj << ")";
+            break;
+        }
+        case BaseObject::UI_OBJECT:
+        {
 
+            UIObject * obj = (UIObject *) bobj;
+            if(!obj->methodId){
+                debug << "Object {\n";
+                auto nextTrace =  QString::fromStdString(trace).append("  ").toStdString();
+                CVariant variant;
+                for(auto item: obj->mapID){
+                    debug << nextTrace.c_str() << item.first << ": ";
+                    variant.setValueFromObject(obj->mapObject[item.second]);
+                    logVariant(&variant, debug, nextTrace.c_str(), false);
+                    debug << ",\n";
+                }
+                debug << trace << "}";
+            }else{
+                debug << "function() { [native code] }";
+            }
+
+            break;
+        }
+        default:
+            debug << "Object(" << bobj << ")";
         }
         break;
     }

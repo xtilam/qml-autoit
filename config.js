@@ -1,6 +1,13 @@
 const path = require('path')
+const os = require('os')
+const { readFileSync, existsSync } = require('fs')
+const color = require('colors')
+const { exit } = require('process')
 
-const qtDir = 'E:/Qt/Qt5.12.12'
+color.enable()
+
+
+const qtDir = getQtDir()
 
 const qtPath = {
     bin: path.join(qtDir, '/5.12.12/mingw73_64/bin'),
@@ -53,5 +60,18 @@ const config = {
     ],
 }
 
+function getQtDir() {
+    const qt_install_data = "C:\\ProgramData\\_qt_install_dir.txt"
+    if (!existsSync(qt_install_data)) {
+        console.log('Qt chưa được cài đặt')
+        exit(1)
+    }
+    const qtPath = path.join(readFileSync(qt_install_data, { encoding: 'utf-8' }))
+    if(!qtPath){
+        console.log('Qt chưa được cài đặt')
+        exit(1)
+    }
+    return qtPath
+}
 
 module.exports = config

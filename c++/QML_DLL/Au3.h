@@ -15,17 +15,18 @@ class CObject;
 class Au3 : public QObject
 {
     Q_OBJECT
+    void registerUI_removeSubObject_Recursive(UIObject * obj);
 public:
     explicit Au3(QObject *parent = nullptr);
 
     FunctionInput * inputs;
-
+    Q_PROPERTY(QList<QVariant> ids MEMBER m_ids);
+    QList<QVariant> m_ids = {};
     static void pushVariantFromCVariant(QList<QVariant> * arr, CVariant * variant);
     static void setPropertyVariantFromObject(QMap<QString, QVariant> * map, QString * key, CVariant * obj);
     static void setDataCArrayFromListVariant(CArray * arr, QList<QVariant> * listItem);
     static void setDataCObjectFromMapVariant(CObject * obj, QMap<QString, QVariant> * mapItem);
 public slots:
-
     void registerUI(QJSValue listNames, QString name, int id);
     QList<QVariant> getUIData();
     void sendSignal(QString signal, QJSValue data);

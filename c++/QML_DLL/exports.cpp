@@ -11,7 +11,6 @@
 #include <QQuickStyle>
 #include <QIcon>
 
-
 using namespace std;
 
 bool isDevLoad = false;
@@ -64,7 +63,7 @@ void qmlLoadQRC(LPCWSTR qmlFilePath)
     app = new QGuiApplication(argc, nullptr);
     app->setWindowIcon(QIcon(":/app.ico"));
     engine = new QQmlApplicationEngine();
-    engine->evaluate("var isDev = false; var g = this;");
+    engine->evaluate("var __isDevelopment = false; var g = this;");
     engine->rootContext()->setContextProperty("au3", au3);
     engine->load(QString::fromStdWString(qmlFilePath));
 }

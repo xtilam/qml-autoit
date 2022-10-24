@@ -1,18 +1,16 @@
 # Files:
-- Qt5.12.12.rar: https://drive.google.com/file/d/1FRw7GB-ndbP-0iGVHTy-u4hDfetYxJWh/view
+- Qt5.12.12.rar: https://drive.google.com/file/d/1FRw7GB-ndbP-0iGVHTy-u4hDfetYxJWh/view 
 - Source code: https://github.com/xtilam/qml-autoit
 
 # Môi trường
 - Nodejs v16 trở lên
 - AutoIt3 + Scite
 - VSCode IDE (cho tiện)
+- Qt5.12.12.rar => giải nén chạy file install.bat
 
 # Các lệnh npm cơ bản
 ```text\
 npm run dev => chạy môi trường dev, auto reload .au3 và .qml
-npm run qt-setup 
-    => cấu hình lại thư mục Qt5.12.12 được giải nén 
-    *Note: cấu hình biến qtDir trong file config.js, đường dẫn đến trước thư mục Tools
 npm run build => build app
 ```
 

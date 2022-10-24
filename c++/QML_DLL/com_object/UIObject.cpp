@@ -6,12 +6,16 @@
 
 UIObject *UIObject::add(wchar_t *key)
 {
+    if(this->methodId){
+        au3->m_ids.push_back(this->methodId);
+        this->methodId = 0;
+    }
+
     auto _index = this->mapID[key];
     UIObject * obj = nullptr;
 
     if(_index){
         obj = this->mapObject[_index];
-        return obj;
     }else{
         obj = BaseObject::init<UIObject>();
         obj->addRef();
@@ -92,8 +96,20 @@ void UIObject::clear()
     for(auto &obj: this->mapObject){
         BaseObject::deleteObject(obj.second->comobject);
     }
+    if(this->methodId){
+        au3->m_ids.push_back(this->methodId);
+    }
     this->mapObject = {};
     this->mapID = {};
     this->autoIndex = 1;
     this->methodId = 0;
+}
+
+void UIObject::setMethodID(int id)
+{
+    this->clear();
+    if(this->methodId){
+        au3->m_ids.push_back(this->methodId);
+    }
+    this->methodId = id;
 }

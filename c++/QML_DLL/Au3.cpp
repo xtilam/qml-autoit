@@ -3,6 +3,18 @@
 #include "exports.h"
 #include "com_object/AllComObject.h"
 
+void Au3::registerUI_removeSubObject_Recursive(UIObject *obj)
+{
+    if(obj->methodId){
+        m_ids.push_back(obj->methodId);
+        qDebug() << "remove " << obj->methodId;
+    }else{
+        for(auto &item: obj->mapObject){
+            this->registerUI_removeSubObject_Recursive(item.second);
+        }
+    }
+}
+
 Au3::Au3(QObject *parent) : QObject(parent)
 {
 
@@ -197,14 +209,15 @@ void Au3::registerUI(QJSValue listNames, QString name, int id)
     auto list = listNames.toVariant().toList();
 
     UIObject * obj = ui;
+    UIObject * itemObj = nullptr;
 
     for (auto &item: list) {
         auto key = item.toString().toStdWString();
         if(key.empty()) continue;
         obj = obj->add((wchar_t *)key.c_str());
     }
-
-    obj->add((wchar_t *)name.toStdWString().c_str())->methodId = id;
+    itemObj = obj->add((wchar_t *)name.toStdWString().c_str());
+    itemObj->setMethodID(id);
 }
 
 QList<QVariant> Au3::getUIData()

@@ -10,7 +10,6 @@ Func main()
 		QML_loadQMLFromFile(@ScriptDir & '/../qml/_Window.qml')
 	Else
 		QML_loadQMLFromQRC('qrc:/_Window.qml')
-		ConsoleWrite('from qml dll 123' & @CRLF)
 	EndIf
 
 	$ui.setTitle('Login')

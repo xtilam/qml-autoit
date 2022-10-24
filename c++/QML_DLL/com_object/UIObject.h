@@ -24,8 +24,9 @@ public:
     void notPrototypeExecute(long key, FunctionInput *params) override;
     void onDelete() override;
     void clear();
+    void setMethodID(int id);
     void onCreate() override{
-        this->objType = BASE_OBJECT;
+        this->objType = UI_OBJECT;
     };
 };
 

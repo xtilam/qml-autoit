@@ -10,6 +10,11 @@ Func onUserLogin($user)
 	EndIf
 EndFunc   ;==>onUserLogin
 
+Func onResetNum()
+	$console.Log('call reset num', $ui)
+	$ui.reset()
+EndFunc
+
 Func onUserLogout()
 	$ui.setTitle('Login')
 	$ui.setView('Login')

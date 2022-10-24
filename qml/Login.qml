@@ -15,20 +15,6 @@ Item {
 			},
 			setColorStatus: function (color) {
 				status.color = color || 'black'
-			},
-		})
-		register('login.test', {
-			test: function (test) {
-				console.log('test', JSON.stringify(test, null, ' '))
-			},
-			
-		})
-		register('', {
-			getUser: function(){
-				return {
-					"username": usernameInput.text,
-					"password": passwordInput.text
-				}
 			}
 		})
 	}

@@ -3,6 +3,8 @@ import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQml 2.12
 
+import "main.js" as MainJS
+
 ApplicationWindow{
 	visible: true
 	id: window
@@ -19,14 +21,15 @@ ApplicationWindow{
 	{
 		if(__isDevelopment){
 			Qt.createQmlObject(`
-							   import QtQuick 2.12
-							   Connections{
-							   target: au3
-							   onAu3Reload: {
-							   _mainLoader.source = ""
-							   _mainLoader.source = "_Main.qml"
-							   }
-							   }`, window)
+				import QtQuick 2.12
+					Connections{
+					target: au3
+					onAu3Reload: {
+						g.removeUIMethod()
+						_mainLoader.source = ""
+						_mainLoader.source = "_Main.qml"
+					}
+				}`, window)
 		}
 	}
 	onClosing: {
