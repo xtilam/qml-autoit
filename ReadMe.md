@@ -106,7 +106,7 @@ Button {
 ```
 Từ file .au3
 ```autoit
-;Hàm này sẽ được gọi khi hàm sendSignal trong QML được gọi
+;Hàm này sẽ được gọi khi hàm "call" trong QML được gọi
 Func userLogin($user)
     Local $username = $user.username
     Local $password = $user.password
