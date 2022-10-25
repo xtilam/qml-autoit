@@ -31,6 +31,6 @@ g.removeUIMethod = function (id) {
     au3.ids = []
 }
 
-g.sendSignal = function (signal, ...args) {
+g.call = function (signal, ...args) {
     au3.sendSignal.call(au3, signal, args)
 }

@@ -51,7 +51,7 @@ Func QML_mainHandleSignal($func, $p)
 
 	Local $length = $p.length - 1
 	Local $start = ''
-	$strExecute = 'on' & $func & '('
+	$strExecute = $func & '('
 	
 	For $i = 0 To $length Step +1
 		$strExecute &= $start & '$p.get(' & $i & ')'
@@ -60,7 +60,6 @@ Func QML_mainHandleSignal($func, $p)
 	$strExecute &= ')'
 
 	Execute($strExecute)
-
 EndFunc
 
 Func QML_enableDebug()

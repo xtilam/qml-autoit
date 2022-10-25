@@ -51,7 +51,7 @@ Item {
 			Layout.columnSpan: 2
 			text: "Login"
 			onClicked: {
-				sendSignal('userLogin', 
+				call('userLogin', 
 					{
 						"username": usernameInput.text,
 						"password": passwordInput.text

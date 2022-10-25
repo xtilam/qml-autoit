@@ -86,7 +86,7 @@ Func test()
 EndFunc
 ```
 
-## Gửi signal từ qml đến AutoIt
+## Gọi một hàm trong AutoIt từ qml
 Từ file .qml
 ```qml
 Button {
@@ -96,8 +96,8 @@ Button {
     text: "Login"
     onClicked: {
         // Gửi signal cho AutoIt
-        // Sẽ gọi hàm onUserLogin trong Autoit
-        sendSignal('userLogin', {
+        // Sẽ gọi hàm userLogin trong Autoit
+        call('userLogin', {
             "username": usernameInput.text,
             "password": passwordInput.text
         })
@@ -107,13 +107,13 @@ Button {
 Từ file .au3
 ```autoit
 ;Hàm này sẽ được gọi khi hàm sendSignal trong QML được gọi
-Func onUserLogin($user)
+Func userLogin($user)
     Local $username = $user.username
     Local $password = $user.password
     $console.Log('user', $user)
 EndFunc
 ```
-## Đăng kí một function từ QML
+## Đăng kí một function từ qml sang cho autoit gọi
 Từ file .qml
 ```qml
 Component.onCompleted: {

@@ -1,6 +1,6 @@
 #include "lib/qml.au3"
 
-Func onUserLogin($user)
+Func userLogin($user)
 	if $user.username = 'admin' and $user.password = 'admin' Then
 		$ui.setView('MainView')
 		$ui.setTitle('Welcome')
@@ -10,12 +10,7 @@ Func onUserLogin($user)
 	EndIf
 EndFunc   ;==>onUserLogin
 
-Func onResetNum()
-	$console.Log('call reset num', $ui)
-	$ui.reset()
-EndFunc
-
-Func onUserLogout()
+Func userLogout()
 	$ui.setTitle('Login')
 	$ui.setView('Login')
 EndFunc
